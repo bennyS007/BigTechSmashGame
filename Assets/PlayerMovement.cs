@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
-            jumpVelocity = Mathf.Sqrt(3f * -2f * -9.81f);
+            jumpVelocity = Mathf.Sqrt(7f * -2f * -9.81f);
         }
         
         jumpVelocity += -9.81f * Time.deltaTime;
