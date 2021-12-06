@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     public bool jumping;
     public bool crouching;
 
+    public CapsuleCollider bodyColider;
+    public CapsuleCollider lArmColider;
+    public CapsuleCollider rArmColider;
 
     Rigidbody rb;
     float jumpVelocity;
@@ -28,30 +31,41 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         isGrounded = Physics.CheckSphere(jumpPoint.position, 0.5f, groundMask);
+       
 
         if (isGrounded && rb.velocity.y < 0)
         {
             crouching = false;
             jumping = false;
             jumpVelocity = -2f;
+            bodyColider.enabled = true;
+            lArmColider.enabled = true;
+            rArmColider.enabled = true;
         }
 
         if (Input.GetAxisRaw("Vertical") > 0 && isGrounded)
         {
             jumping = true;
             jumpVelocity = Mathf.Sqrt(jumpHeight * -2f * -9.81f);
+            bodyColider.enabled = false;
+            lArmColider.enabled = false;
+            rArmColider.enabled = false;
         }
 
-        if(Input.GetAxisRaw("Vertical") < 0 && isGrounded)
+        if(Input.GetAxisRaw("Vertical") < 0)
         {
             crouching = true;
-
+            bodyColider.enabled = false;
+            lArmColider.enabled = false;
+            rArmColider.enabled = false;
+            jumpVelocity = -Mathf.Sqrt(jumpHeight * -2f * -9.81f);
         }
 
         jumpVelocity += -9.81f * Time.deltaTime;
         rb.velocity = new Vector3(rb.velocity.x, jumpVelocity, 0f);
         RotatePlayer();
     }
+
     void FixedUpdate()
     {
         if (Input.GetAxisRaw("Horizontal")!= 0)
