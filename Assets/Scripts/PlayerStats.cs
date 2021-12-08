@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public static int deaths;
+    public static int lives;
 
     // Start is called before the first frame update
     void Start()
     {
         
-        deaths = 0;
+        lives = 0;
     }
 
     

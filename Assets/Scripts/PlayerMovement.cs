@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
     public bool jumping;
     public bool crouching;
+    public bool punching;
+    public bool kicking;
 
     public CapsuleCollider bodyColider;
     public CapsuleCollider lArmColider;
@@ -61,6 +63,24 @@ public class PlayerMovement : MonoBehaviour
             jumpVelocity = -Mathf.Sqrt(jumpHeight * -2f * -9.81f);
         }
 
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Punch();
+        }
+        else
+        {
+            punching = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Kick();
+        }
+        else
+        {
+            kicking = false;
+        }
+        
         jumpVelocity += -9.81f * Time.deltaTime;
         rb.velocity = new Vector3(rb.velocity.x, jumpVelocity, 0f);
         RotatePlayer();
@@ -85,5 +105,15 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0f, rotationY, 0f);
         }
+    }
+
+    void Kick()
+    {
+        kicking = true;
+    }
+
+    void Punch()
+    {
+        punching = true;
     }
 }

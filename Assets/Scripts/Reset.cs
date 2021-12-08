@@ -30,7 +30,7 @@ public class Reset : MonoBehaviour
     IEnumerator Die()
     {
         if (!died) { 
-            PlayerStats.deaths++;
+            PlayerStats.lives--;
             ///Instantiate(deathParticle);
             yield return new WaitForSeconds(0.3f);
             Respawn();

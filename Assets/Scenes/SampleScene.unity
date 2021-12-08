@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4660946, g: 0.4657923, b: 0.46188927, a: 1}
+  m_IndirectSpecularColor: {r: 0.46613085, g: 0.46583027, b: 0.461927, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -276,6 +276,8 @@ MonoBehaviour:
   isGrounded: 0
   jumping: 0
   crouching: 0
+  punching: 0
+  kicking: 0
   bodyColider: {fileID: 0}
   lArmColider: {fileID: 0}
   rArmColider: {fileID: 0}
@@ -347,7 +349,7 @@ Light:
     m_UseCullingMatrixOverride: 0
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_Flare: {fileID: 12100000, guid: 54dd6ebcfb2e5274191cfc0eb2f8d05a, type: 2}
+  m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
@@ -508,6 +510,8 @@ MonoBehaviour:
   isGrounded: 0
   jumping: 0
   crouching: 0
+  punching: 0
+  kicking: 0
   bodyColider: {fileID: 233358406}
   lArmColider: {fileID: 1886303904}
   rArmColider: {fileID: 1591482139}
