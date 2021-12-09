@@ -14,5 +14,9 @@ public class PlayerStats : MonoBehaviour
         lives = 3;
     }
 
+    public void TakeDamage(int damage)
+    {
+        dmg += damage;
+    }
     
 }

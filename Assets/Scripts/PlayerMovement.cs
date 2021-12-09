@@ -209,7 +209,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 continue;
             }
-            Debug.Log(c.name);
+            c.SendMessageUpwards("TakeDamage", 12);
         }
     }
 }
