@@ -9,67 +9,87 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float jumpHeight;
 
-    public float rotationY = -90f;
-    public float rotationSpeed;
     public LayerMask groundMask;
+    public LayerMask solidGroundMask;
     public bool isGrounded;
+    public bool isNonCrouchGround;
     public bool jumping;
     public bool crouching;
-    public bool punching;
+    public int punches;
+    public float punchTime;
     public bool kicking;
 
     public CapsuleCollider bodyColider;
-    public CapsuleCollider lArmColider;
-    public CapsuleCollider rArmColider;
 
     Rigidbody rb;
     float jumpVelocity;
+    Vector3 startScale;
+    Animator animator;
     private void Start()
     {
-        
+        startScale = transform.localScale;
         rb = GetComponent<Rigidbody>();
-
+        animator = GetComponent<Animator>();
     }
     private void Update()
     {
         isGrounded = Physics.CheckSphere(jumpPoint.position, 0.5f, groundMask);
-       
+        isNonCrouchGround = Physics.CheckSphere(jumpPoint.position, 0.5f, solidGroundMask);
 
-        if (isGrounded && rb.velocity.y < 0)
+        if ((isGrounded || isNonCrouchGround) && jumping)
         {
-            crouching = false;
             jumping = false;
+            animator.SetBool("Landed", true);
+        }
+
+        else if ((isGrounded || isNonCrouchGround) && rb.velocity.y < 0)
+        {
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("Landed", false);
+            animator.SetBool("IsFalling", false);
             jumpVelocity = -2f;
             bodyColider.enabled = true;
-            lArmColider.enabled = true;
-            rArmColider.enabled = true;
         }
 
-        if (Input.GetAxisRaw("Vertical") > 0 && isGrounded)
+        
+
+        if (!(isGrounded || isNonCrouchGround) && rb.velocity.y < 0)
         {
             jumping = true;
-            jumpVelocity = Mathf.Sqrt(jumpHeight * -2f * -9.81f);
-            bodyColider.enabled = false;
-            lArmColider.enabled = false;
-            rArmColider.enabled = false;
+            animator.SetBool("IsFalling", true);
         }
 
-        if(Input.GetAxisRaw("Vertical") < 0)
+        if (Input.GetAxisRaw("Vertical") > 0 && (isGrounded || isNonCrouchGround))
         {
-            crouching = true;
+            
+            animator.SetBool("IsJumping", true);
+            jumpVelocity = Mathf.Sqrt(jumpHeight * -2f * -9.81f);
             bodyColider.enabled = false;
-            lArmColider.enabled = false;
-            rArmColider.enabled = false;
+        }
+
+        if(Input.GetAxisRaw("Vertical") < 0 && isGrounded)
+        {
+            animator.SetBool("IsCrouching", true);
+            bodyColider.enabled = false;
             jumpVelocity = -Mathf.Sqrt(jumpHeight * -2f * -9.81f);
+        }
+
+        else if(Input.GetAxisRaw("Vertical") < 0 && isNonCrouchGround)
+        {
+            animator.SetBool("IsCrouching", true);
+            bodyColider.center = new Vector3(-0.15f, 0.5f, 0);
+        }
+
+        if (Input.GetAxisRaw("Vertical") >= 0)
+        {
+            animator.SetBool("IsCrouching", false);
+            bodyColider.height = 1.65f;
+            bodyColider.center = new Vector3(-0.15f, 0.83f, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.X))
         {
             Punch();
-        }
-        else
-        {
-            punching = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -97,13 +117,29 @@ public class PlayerMovement : MonoBehaviour
 
     void RotatePlayer()
     {
+        transform.rotation = Quaternion.Euler(0,0,0);
         if (Input.GetAxis("Horizontal") > 0)
         {
-            transform.rotation = Quaternion.Euler(0f, Mathf.Abs(rotationY), 0f);
+            transform.localScale = new Vector3(-startScale.x, startScale.y, startScale.z);
+            animator.SetBool("IsWalking", true);
+            if (animator.GetBool("IsCrouching")) { 
+                animator.SetBool("IsWalking", false);
+                animator.SetBool("IsCrouchWalking", true);
+            }
         }
-        if (Input.GetAxis("Horizontal") < 0)
+        else if (Input.GetAxis("Horizontal") < 0)
         {
-            transform.rotation = Quaternion.Euler(0f, rotationY, 0f);
+            transform.localScale = new Vector3(startScale.x, startScale.y, startScale.z);
+            animator.SetBool("IsWalking", true);
+            if (animator.GetBool("IsCrouching"))
+            {
+                animator.SetBool("IsWalking", false);
+                animator.SetBool("IsCrouchWalking", true);
+            }
+        }
+        else{ 
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsCrouchWalking", false);
         }
     }
 
@@ -114,6 +150,26 @@ public class PlayerMovement : MonoBehaviour
 
     void Punch()
     {
-        punching = true;
+        punches = animator.GetInteger("Punches") + 1;
+        animator.SetInteger("Punches", punches);
+    }
+
+    public void punchEnd1()
+    {
+        if(animator.GetInteger("Punches") == 1)
+        {
+            animator.SetInteger("Punches", 0);
+        }
+    }
+    public void punchEnd2()
+    {
+        if (animator.GetInteger("Punches") == 2)
+        {
+            animator.SetInteger("Punches", 0);
+        }
+    }
+    public void punchEnd3()
+    {
+        animator.SetInteger("Punches", 0);
     }
 }
