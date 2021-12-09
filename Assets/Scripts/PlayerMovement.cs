@@ -14,12 +14,12 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
     public bool isNonCrouchGround;
     public bool jumping;
-    public bool crouching;
     public int punches;
     public float punchTime;
     public bool kicking;
 
     public CapsuleCollider bodyColider;
+    public Collider[] attackHitboxes;
 
     Rigidbody rb;
     float jumpVelocity;
@@ -172,5 +172,44 @@ public class PlayerMovement : MonoBehaviour
     public void punchEnd3()
     {
         animator.SetInteger("Punches", 0);
+    }
+
+    public void HitScanPunch1()
+    {
+        Collider[] cols = Physics.OverlapBox(attackHitboxes[0].bounds.center, attackHitboxes[0].bounds.extents, attackHitboxes[0].transform.rotation, LayerMask.GetMask("Hitboxes"));
+        foreach (Collider c in cols)
+        {
+            if (c.transform == transform)
+            {
+                continue;
+            }
+            Debug.Log(c.name);
+        }
+    }
+
+    public void HitScanPunch2()
+    {
+        Collider[] cols = Physics.OverlapBox(attackHitboxes[1].bounds.center, attackHitboxes[1].bounds.extents, attackHitboxes[1].transform.rotation, LayerMask.GetMask("Hitboxes"));
+        foreach (Collider c in cols)
+        {
+            if (c.transform == transform)
+            {
+                continue;
+            }
+            Debug.Log(c.name);
+        }
+    }
+
+    public void HitScanPunch3()
+    {
+        Collider[] cols = Physics.OverlapBox(attackHitboxes[2].bounds.center, attackHitboxes[2].bounds.extents, attackHitboxes[2].transform.rotation, LayerMask.GetMask("Hitboxes"));
+        foreach (Collider c in cols)
+        {
+            if (c.transform == transform)
+            {
+                continue;
+            }
+            Debug.Log(c.name);
+        }
     }
 }
