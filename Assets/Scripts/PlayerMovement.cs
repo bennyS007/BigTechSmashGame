@@ -77,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         else if(Input.GetAxisRaw("Vertical") < 0 && isNonCrouchGround)
         {
             animator.SetBool("IsCrouching", true);
+            bodyColider.height = 1f;
             bodyColider.center = new Vector3(-0.15f, 0.5f, 0);
         }
 
