@@ -17,13 +17,14 @@ public class NewBehaviourScript : MonoBehaviour
         
     }
 
-    public void NextLevel()
+    public void PlayButton()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadSceneAsync("LevelSelect");
     }
     public void QuitGame()
     {
         Application.Quit();
+        Debug.Log("QUIT!");
     }
     public void Lvl01()
     {
@@ -48,5 +49,9 @@ public class NewBehaviourScript : MonoBehaviour
     public void Lvl06()
     {
         SceneManager.LoadSceneAsync(6);
+    }
+    public void BackToStart()
+    {
+        SceneManager.LoadScene("StartMenu");
     }
 }
