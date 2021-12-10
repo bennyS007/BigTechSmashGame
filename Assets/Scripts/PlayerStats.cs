@@ -5,13 +5,18 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public static int lives;
+    public static float dmg;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-        lives = 0;
+        dmg = 0;
+        lives = 3;
     }
 
+    public void TakeDamage(int damage)
+    {
+        dmg += damage;
+    }
     
 }

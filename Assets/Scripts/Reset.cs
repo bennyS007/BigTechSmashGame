@@ -18,7 +18,7 @@ public class Reset : MonoBehaviour
     {
         if (transform.position.y < -20)
         {
-            StartCoroutine(Die());
+            Die();
             died = true;
         }
         else
@@ -27,12 +27,11 @@ public class Reset : MonoBehaviour
         }
     }
 
-    IEnumerator Die()
+    void Die()
     {
         if (!died) { 
             PlayerStats.lives--;
             ///Instantiate(deathParticle);
-            yield return new WaitForSeconds(0.3f);
             Respawn();
         }
     }
