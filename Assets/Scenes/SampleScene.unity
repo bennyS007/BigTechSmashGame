@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 156197898}
   - component: {fileID: 156197897}
   - component: {fileID: 156197896}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Attack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156197894}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 312064656}
   - component: {fileID: 312064655}
   - component: {fileID: 312064654}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Attack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312064652}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -643,7 +643,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 878962684}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: HitScans
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,7 +679,7 @@ GameObject:
   - component: {fileID: 1314482413}
   - component: {fileID: 1314482412}
   - component: {fileID: 1314482411}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Attack3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -694,7 +694,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314482410}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
