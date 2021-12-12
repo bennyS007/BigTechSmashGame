@@ -20,7 +20,6 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(int damage)
     {
         dmg += damage;
-        rb.AddForce();
     }
     
 }
