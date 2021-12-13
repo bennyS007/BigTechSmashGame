@@ -17,9 +17,22 @@ public class PlayerStats : MonoBehaviour
         lives = 3;
     }
 
+    private void Update()
+    {
+        if (lives == 0)
+        {
+            return;
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         dmg += damage;
+    }
+
+    public void DealKnockback(Transform attacker)
+    {
+        rb.AddForce((this.transform.position - attacker.transform.position) * (dmg/10), ForceMode.Impulse);
     }
     
 }

@@ -8,7 +8,7 @@ public class CameraMovement : MonoBehaviour
 
     public float yOffset = 2f;
     public float minDistance = 7.5f;
-    public float xMin, xMax, yMin, yMax;
+    float xMin, xMax, yMin, yMax;
 
     private void Start()
     {

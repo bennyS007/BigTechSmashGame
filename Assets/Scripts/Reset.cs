@@ -31,6 +31,7 @@ public class Reset : MonoBehaviour
     {
         if (!died) { 
             PlayerStats.lives--;
+            PlayerStats.dmg = 0;
             ///Instantiate(deathParticle);
             Respawn();
         }

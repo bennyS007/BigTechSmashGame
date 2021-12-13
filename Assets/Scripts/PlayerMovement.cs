@@ -118,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    void RotatePlayer()
+        void RotatePlayer()
     {
         if (Input.GetAxis("Horizontal") > 0)
         {
@@ -197,7 +197,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 continue;
             }
-            Debug.Log(c.name);
+            c.SendMessageUpwards("TakeDamage", 12);
+            c.SendMessageUpwards("DealKnockback", this.transform);
         }
     }
 
@@ -210,7 +211,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 continue;
             }
-            Debug.Log(c.name);
+            c.SendMessageUpwards("TakeDamage", 10);
+            c.SendMessageUpwards("DealKnockback", this.transform);
         }
     }
 
@@ -223,7 +225,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 continue;
             }
-            c.SendMessageUpwards("TakeDamage", 12);
+            c.SendMessageUpwards("TakeDamage", 20);
+            c.SendMessageUpwards("DealKnockback", this.transform);
         }
     }
 }
