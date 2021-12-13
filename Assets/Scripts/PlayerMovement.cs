@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask groundMask;
     public LayerMask solidGroundMask;
+
+    public bool isSideways;
     public bool isGrounded;
     public bool isNonCrouchGround;
     public bool jumping;
@@ -116,12 +118,17 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    void RotatePlayer()
+        void RotatePlayer()
     {
-        transform.rotation = Quaternion.Euler(0,0,0);
         if (Input.GetAxis("Horizontal") > 0)
         {
-            transform.localScale = new Vector3(-startScale.x, startScale.y, startScale.z);
+            if (isSideways) { 
+                transform.localScale = new Vector3(-startScale.x, startScale.y, startScale.z);
+            }
+            else
+            {
+                transform.localScale = new Vector3(startScale.x, startScale.y, -startScale.z);
+            }
             animator.SetBool("IsWalking", true);
             if (animator.GetBool("IsCrouching")) { 
                 animator.SetBool("IsWalking", false);
@@ -130,7 +137,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetAxis("Horizontal") < 0)
         {
-            transform.localScale = new Vector3(startScale.x, startScale.y, startScale.z);
+            if (isSideways)
+            {
+                transform.localScale = new Vector3(startScale.x, startScale.y, startScale.z);
+            }
+            else
+            {
+                transform.localScale = new Vector3(startScale.x, startScale.y, startScale.z);
+            }
             animator.SetBool("IsWalking", true);
             if (animator.GetBool("IsCrouching"))
             {
@@ -183,7 +197,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 continue;
             }
-            Debug.Log(c.name);
+            c.SendMessageUpwards("TakeDamage", 12);
+            c.SendMessageUpwards("DealKnockback", this.transform);
         }
     }
 
@@ -196,7 +211,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 continue;
             }
-            Debug.Log(c.name);
+            c.SendMessageUpwards("TakeDamage", 10);
+            c.SendMessageUpwards("DealKnockback", this.transform);
         }
     }
 
@@ -209,7 +225,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 continue;
             }
-            c.SendMessageUpwards("TakeDamage", 12);
+            c.SendMessageUpwards("TakeDamage", 20);
+            c.SendMessageUpwards("DealKnockback", this.transform);
         }
     }
 }
