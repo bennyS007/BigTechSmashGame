@@ -11,8 +11,9 @@ public class SceneTransition : MonoBehaviour
     public bool completedLvl01 = true;
     public bool completedLvl02 = true;
     public bool completedLvl03 = true;
+
     // Start is called before the first frame update
-  
+
 
     // Update is called once per frame
     void Update()
