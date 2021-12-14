@@ -2296,7 +2296,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: mc
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3029569131354094809, guid: efb26f35490f21543adccf61efa655a5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: efb26f35490f21543adccf61efa655a5, type: 3}
 --- !u!1 &974376306
 GameObject:
@@ -2900,7 +2901,6 @@ GameObject:
   - component: {fileID: 1304089414}
   - component: {fileID: 1304089413}
   - component: {fileID: 1304089412}
-  - component: {fileID: 1304089417}
   - component: {fileID: 1304089411}
   m_Layer: 10
   m_Name: bezosFBX
@@ -2940,6 +2940,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbcf54dc68b222242ba480081ae0277b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: 0
+  dmg: 0
 --- !u!114 &1304089413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3022,19 +3024,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1304089417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1304089410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc014dcd167504c469edf55486f0c47c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resetPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &1308855831
 GameObject:
   m_ObjectHideFlags: 0
@@ -3453,6 +3442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbcf54dc68b222242ba480081ae0277b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: 0
+  dmg: 0
 --- !u!1 &1639682090
 GameObject:
   m_ObjectHideFlags: 0
