@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Quit : MonoBehaviour
 {
@@ -11,6 +12,16 @@ public class Quit : MonoBehaviour
         Debug.Log("Quit");
     }
 
+    public void Continue()
+    {
+        SceneManager.LoadSceneAsync("DataStolen");
+    }
+
+    public void levelSelect()
+    {
+        Debug.Log("saf");
+        SceneManager.LoadScene("LevelSelect");
+    }
 
     // Start is called before the first frame update
     void Start()
