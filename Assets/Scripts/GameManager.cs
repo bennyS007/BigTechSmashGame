@@ -41,15 +41,15 @@ public class GameManager : MonoBehaviour
     }
     public void Lvl01()
     {
-        SceneManager.LoadSceneAsync(3);
+        SceneManager.LoadSceneAsync(4);
     }
     public void Lvl02()
     {
-        SceneManager.LoadSceneAsync(4);
+        SceneManager.LoadSceneAsync(5);
     }
     public void Lvl03()
     {
-        SceneManager.LoadSceneAsync(5);
+        SceneManager.LoadSceneAsync(6);
     }
    
     public void BackToStart()
@@ -68,5 +68,9 @@ public class GameManager : MonoBehaviour
         PauseMenu.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+    }
+    public void Continue()
+    {
+        SceneManager.LoadScene(3);
     }
 }
