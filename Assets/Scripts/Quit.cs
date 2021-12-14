@@ -17,9 +17,13 @@ public class Quit : MonoBehaviour
         SceneManager.LoadSceneAsync("DataStolen");
     }
 
+    public void Input()
+    {
+        SceneManager.LoadSceneAsync("DataGatheringScene");
+    }
+
     public void levelSelect()
     {
-        Debug.Log("saf");
         SceneManager.LoadScene("LevelSelect");
     }
 
