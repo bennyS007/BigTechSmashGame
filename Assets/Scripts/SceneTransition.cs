@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneTransition : MonoBehaviour
 {
     public Text info;
-    public UserData data;
+    public  UserData data;
     public bool completedLvl01 = true;
     public bool completedLvl02 = true;
     public bool completedLvl03 = true;
@@ -19,7 +19,7 @@ public class SceneTransition : MonoBehaviour
     {
        if(completedLvl01 && !completedLvl02 && !completedLvl03)
         {
-            info.text = "You have regained your credit card number : " + data.creditCardNumber + "\n You have regained your empolyee ID : " + data.employeeID + "\n using a VPN.";
+            info.text = "You have regained your credit card number : " + data. + "\n You have regained your empolyee ID : " + data.employeeID + "\n using a VPN.";
 
         }
         if (completedLvl01 && completedLvl02 && !completedLvl03)
@@ -32,7 +32,7 @@ public class SceneTransition : MonoBehaviour
             info.text = "You have now also regained your username : " + data.userName + "\n You have regained your gmail password : " + data.gmailPassword + "\n using a firewall.";
 
         }
-        else
+        else if(!completedLvl01 && !completedLvl02 && !completedLvl03)
         {
            info.text =  "You have lost and now we can use your data for whatever we want!";
         }

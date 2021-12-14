@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayButton()
     {
-        SceneManager.LoadSceneAsync("LevelSelect");
+        SceneManager.LoadSceneAsync("DataGatheringScene");
     }
     public void QuitGame()
     {
@@ -41,28 +41,17 @@ public class GameManager : MonoBehaviour
     }
     public void Lvl01()
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(3);
     }
     public void Lvl02()
     {
-        SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync(4);
     }
     public void Lvl03()
     {
-        SceneManager.LoadSceneAsync(3);
-    }
-    public void Lvl04()
-    {
-        SceneManager.LoadSceneAsync(4);
-    }
-    public void Lvl05()
-    {
         SceneManager.LoadSceneAsync(5);
     }
-    public void Lvl06()
-    {
-        SceneManager.LoadSceneAsync(6);
-    }
+   
     public void BackToStart()
     {
         SceneManager.LoadScene("StartMenu");
