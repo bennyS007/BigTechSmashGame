@@ -7,17 +7,17 @@ public class UserData : MonoBehaviour
 {
 
     public InputField userNameInput;
-    public string userName;
+    public static string userName;
     public InputField gmailPasswordInput;
-    public string gmailPassword;
+    public static string gmailPassword;
     public InputField birthdayInput;
-    public string birthday;
+    public static string birthday;
     public InputField ssnInput;
-    public string ssn;
+    public static string ssn;
     public InputField creditCardNumberInput;
-    public string creditCardNumber;
+    public static string creditCardNumber;
     public InputField employeeIDInput;
-    public string employeeID;
+    public static string employeeID;
 
     public void dataCollection()
     {

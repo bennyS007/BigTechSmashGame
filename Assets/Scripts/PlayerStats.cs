@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerStats : MonoBehaviour
 {
     public int lives;
     public float dmg;
+    public bool isCpu1;
+    public bool isCpu2;
+    public bool isCpu3;
     public Text txt;
 
     Rigidbody rb;
@@ -23,10 +27,22 @@ public class PlayerStats : MonoBehaviour
     {
         if (lives == 0)
         {
-            return;
+            if (isCpu1)
+            {
+                SceneTransition.completedLvl01 = true;
+            }
+            if (isCpu2)
+            {
+                SceneTransition.completedLvl02 = true;
+            }
+            if (isCpu3)
+            {
+                SceneTransition.completedLvl03 = true;
+            }
+            SceneManager.LoadSceneAsync(7);
         }
 
-        if (transform.position.y < -20)
+        if (transform.position.y < -20 || transform.position.y > 25)
         {
             Die();
         }
@@ -41,7 +57,7 @@ public class PlayerStats : MonoBehaviour
 
     public void DealKnockback(Transform attacker)
     {
-        rb.AddForce((this.transform.position - attacker.transform.position) * (dmg/10), ForceMode.Impulse);
+        rb.AddForce((this.transform.position - attacker.transform.position) * (dmg/5), ForceMode.Impulse);
     }
     void Die()
     {
