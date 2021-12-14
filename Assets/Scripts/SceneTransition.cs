@@ -20,7 +20,7 @@ public class SceneTransition : MonoBehaviour
     {
        if(completedLvl01 && !completedLvl02 && !completedLvl03)
         {
-            info.text = "You have regained your credit card number : " + data. + "\n You have regained your empolyee ID : " + data.employeeID + "\n using a VPN.";
+            info.text = "You have regained your credit card number : " + data.creditCardNumber + "\n You have regained your empolyee ID : " + data.employeeID + "\n using a VPN.";
 
         }
         if (completedLvl01 && completedLvl02 && !completedLvl03)
