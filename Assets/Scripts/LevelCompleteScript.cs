@@ -15,6 +15,6 @@ public class LevelCompleteScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LevelCompleteText.text = "Congratulations! You beat the level and have successfully protected your SSN: " + UserData.ssn + " by using a VPN!";
+        
     }
 }
